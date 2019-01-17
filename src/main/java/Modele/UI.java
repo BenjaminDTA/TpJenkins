@@ -105,8 +105,8 @@ public class UI {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public static void afficheCreationVol() throws ParseException {
-		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat dt = new SimpleDateFormat("dd/mm/yyyy");
 
@@ -130,8 +130,8 @@ public class UI {
 	}
 	
 	
+	@SuppressWarnings("resource")
 	public static void afficheCreationReservation() throws ParseException {
-		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("N° de réservation :");
@@ -147,17 +147,17 @@ public class UI {
 		afficheMenuGeneral();
 	}
 	
+	@SuppressWarnings("unused")
 	public static void afficheListeVol(){
 		EntityManager em = DatabaseHelper.createEntityManager();
 		TypedQuery<Vol> query = em.createQuery("from Vol", Vol.class);
-		@SuppressWarnings("unused")
 		List<Vol> vols = query.getResultList();
 
 	}
+	@SuppressWarnings("unused")
 	public static void afficheListeReservation(){
 		EntityManager em = DatabaseHelper.createEntityManager();
 		TypedQuery<Reservation> query = em.createQuery("from Reservation", Reservation.class);
-		@SuppressWarnings("unused")
 		List<Reservation> reservations = query.getResultList();
 
 	}
