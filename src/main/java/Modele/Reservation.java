@@ -19,22 +19,22 @@ public class Reservation {
 	private Long numeroReservation;
 	@Column
 	@NotBlank
-	private String Nom;
+	private String nom;
 	@Column
 	@NotBlank
-	private String Prenom;
+	private String prenom;
 	@Column
 	@NotBlank
-	private Integer Age;
+	private Integer age;
 	@ManyToOne
 	private Vol vol;
 
 	public Reservation(Long numeroReservation, String nom, String prenom, Integer age) {
 		super();
 		this.numeroReservation = numeroReservation;
-		Nom = nom;
-		Prenom = prenom;
-		Age = age;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.age = age;
 	}
 
 	public Long getNumeroReservation() {
@@ -54,27 +54,27 @@ public class Reservation {
 	}
 
 	public String getNom() {
-		return Nom;
+		return nom;
 	}
 
 	public void setNom(String nom) {
-		Nom = nom;
+		this.nom = nom;
 	}
 
 	public String getPrenom() {
-		return Prenom;
+		return prenom;
 	}
 
 	public void setPrenom(String prenom) {
-		Prenom = prenom;
+		this.prenom = prenom;
 	}
 
 	public Integer getAge() {
-		return Age;
+		return age;
 	}
 
 	public void setAge(Integer age) {
-		Age = age;
+		this.age = age;
 	}
 
 }

@@ -5,6 +5,10 @@ import javax.persistence.EntityManager;
 import Modele.Vol;
 
 public class VolDAO {
+		public VolDAO() {
+		super();
+	}
+		
 	public static void createVol(Vol vol) {
 		EntityManager em = DatabaseHelper.createEntityManager();
 		DatabaseHelper.beginTx(em);
@@ -25,4 +29,6 @@ public class VolDAO {
 		em.remove(vol);
 		DatabaseHelper.commitTxAndClose(em);
 	}
+
+
 }
