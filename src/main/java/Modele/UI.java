@@ -15,6 +15,8 @@ import DAO.VolDAO;
 
 public class UI {
 
+	private final static String retourMenu ="Retour au menu principal";
+	
 	public static void afficheMenuGeneral() throws ParseException {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
@@ -62,7 +64,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			System.out.println("1, 2 ou 3 c'est pas compliqué");
+			System.out.println(retourMenu);
 			afficheMenuGeneral();
 
 		}
@@ -81,7 +83,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			System.out.println("1, 2 ou 3 c'est pas compliqué");
+			System.out.println(retourMenu);
 			afficheMenuVolChoix(i);
 		}
 	}
@@ -98,7 +100,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			System.out.println("1, 2 ou 3 c'est pas compliqué");
+			System.out.println(retourMenu);
 			afficheMenuReservationChoix(i);
 		}
 	}
