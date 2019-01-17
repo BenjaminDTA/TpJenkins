@@ -16,7 +16,7 @@ public class Reservation {
 	private Integer id;
 	@Column
 	@NotBlank
-	private Long nReservation;
+	private Long numeroReservation;
 	@Column
 	@NotBlank
 	private String Nom;
@@ -29,12 +29,20 @@ public class Reservation {
 	@ManyToOne
 	private Vol vol;
 
-	public Reservation(Long nReservation, String nom, String prenom, Integer age) {
+	public Reservation(Long numeroReservation, String nom, String prenom, Integer age) {
 		super();
-		this.nReservation = nReservation;
+		this.numeroReservation = numeroReservation;
 		Nom = nom;
 		Prenom = prenom;
 		Age = age;
+	}
+
+	public Long getNumeroReservation() {
+		return numeroReservation;
+	}
+
+	public void setNumeroReservation(Long numeroReservation) {
+		this.numeroReservation = numeroReservation;
 	}
 
 	public Integer getId() {
@@ -43,14 +51,6 @@ public class Reservation {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Long getNReservation() {
-		return nReservation;
-	}
-
-	public void setN_Reservation(Long nReservation) {
-		this.nReservation = nReservation;
 	}
 
 	public String getNom() {

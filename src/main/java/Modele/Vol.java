@@ -19,7 +19,7 @@ public class Vol {
 	private Integer id;
 	@Column
 	@NotBlank
-	private Long nVol;
+	private Long numVol;
 	@Column
 	@NotBlank
 	private String typeAvion;
@@ -35,55 +35,40 @@ public class Vol {
 	@Column
 	@NotBlank
 	private Date date;
-	@OneToMany (mappedBy ="vol")
+	@OneToMany(mappedBy = "vol")
 	List<Reservation> reservations;
-	
-	
-	
-	
-	public Vol(Long nVol, String typeAvion, String villeDepart, String villeArrivee, Integer nbPlace, Date date) {
+
+	public Vol(Long numVol, String typeAvion, String villeDepart, String villeArrivee, Integer nbPlace, Date date) {
 		super();
-		this.nVol = nVol;
+		this.numVol = numVol;
 		this.typeAvion = typeAvion;
 		this.villeDepart = villeDepart;
 		this.villeArrivee = villeArrivee;
 		this.nbPlace = nbPlace;
 		this.date = date;
-		
+
 	}
-	
-	public Vol() {
-		
-	}
-	
-	public Long getnVol() {
-		return nVol;
-	}
-	public void setnVol(Long nVol) {
-		this.nVol = nVol;
-	}
-	public Integer getNbPlace() {
-		return nbPlace;
-	}
-	public void setNbPlace(Integer nbPlace) {
-		this.nbPlace = nbPlace;
-	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Long getNVol() {
-		return nVol;
+	public Long getNumVol() {
+		return numVol;
 	}
-	public void setNVol(Long nVol) {
-		this.nVol = nVol;
+
+	public void setNumVol(Long numVol) {
+		this.numVol = numVol;
 	}
+
 	public String getTypeAvion() {
 		return typeAvion;
 	}
+
 	public void setTypeAvion(String typeAvion) {
 		this.typeAvion = typeAvion;
 	}
@@ -91,14 +76,25 @@ public class Vol {
 	public String getVilleDepart() {
 		return villeDepart;
 	}
+
 	public void setVilleDepart(String villeDepart) {
 		this.villeDepart = villeDepart;
 	}
+
 	public String getVilleArrivee() {
 		return villeArrivee;
 	}
+
 	public void setVilleArrivee(String villeArrivee) {
 		this.villeArrivee = villeArrivee;
+	}
+
+	public Integer getNbPlace() {
+		return nbPlace;
+	}
+
+	public void setNbPlace(Integer nbPlace) {
+		this.nbPlace = nbPlace;
 	}
 
 	public Date getDate() {
@@ -108,7 +104,13 @@ public class Vol {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
 
-	
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
 }

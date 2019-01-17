@@ -1,8 +1,5 @@
 package DAO;
 
-import java.sql.Connection;
-import java.sql.Statement;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

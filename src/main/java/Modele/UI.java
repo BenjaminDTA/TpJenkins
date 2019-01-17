@@ -16,6 +16,7 @@ import DAO.VolDAO;
 public class UI {
 
 	public static void afficheMenuGeneral() throws ParseException {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.println("----------------  MENU  ----------------");
 		System.out.println("1 : Gestion des vols");
@@ -27,6 +28,7 @@ public class UI {
 	}
 
 	public static void afficheMenuVol() throws ParseException {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.println("----------  GESTION DES VOLS  ----------");
 		System.out.println("1 : Creation d'un vol");
@@ -38,6 +40,7 @@ public class UI {
 	}
 
 	public static void afficheMenuReservation() throws ParseException {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.println("----------  GESTION DES RESERVATIONS  ----------");
 		System.out.println("1 : Creation une réservation");
@@ -101,6 +104,7 @@ public class UI {
 	}
 
 	public static void afficheCreationVol() throws ParseException {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat dt = new SimpleDateFormat("dd/mm/yyyy");
 
@@ -125,6 +129,7 @@ public class UI {
 	
 	
 	public static void afficheCreationReservation() throws ParseException {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("N° de réservation :");
@@ -143,12 +148,14 @@ public class UI {
 	public static void afficheListeVol(){
 		EntityManager em = DatabaseHelper.createEntityManager();
 		TypedQuery<Vol> query = em.createQuery("from Vol", Vol.class);
+		@SuppressWarnings("unused")
 		List<Vol> vols = query.getResultList();
 
 	}
 	public static void afficheListeReservation(){
 		EntityManager em = DatabaseHelper.createEntityManager();
 		TypedQuery<Reservation> query = em.createQuery("from Reservation", Reservation.class);
+		@SuppressWarnings("unused")
 		List<Reservation> reservations = query.getResultList();
 
 	}
