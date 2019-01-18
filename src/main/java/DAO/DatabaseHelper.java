@@ -5,7 +5,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class DatabaseHelper {
-
+	private DatabaseHelper(){
+		super();
+	}
 	private static EntityManagerFactory entityManagerFactory;
 
 	public static EntityManager createEntityManager() {

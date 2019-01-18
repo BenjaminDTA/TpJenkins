@@ -3,11 +3,13 @@ package Modele;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import DAO.DatabaseHelper;
 import DAO.ReservationDAO;
@@ -15,16 +17,17 @@ import DAO.VolDAO;
 
 public class UI {
 
-	private final static String retourMenu ="Retour au menu principal";
+	private final static String RetourMenu ="RetourMenu au menu principal";
+	private final static Logger Logger = LoggerFactory.getLogger(UI.class);
 	
 	public static void afficheMenuGeneral() throws ParseException {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
-		System.out.println("----------------  MENU  ----------------");
-		System.out.println("1 : Gestion des vols");
-		System.out.println("2 : Gestion des réservations");
-		System.out.println("3 :	Quitter" + "\n");
-		System.out.println("Entrez votre choix");
+		Logger.info("----------------  MENU  ----------------");
+		Logger.info("1 : Gestion des vols");
+		Logger.info("2 : Gestion des réservations");
+		Logger.info("3 :	Quitter" + "\n");
+		Logger.info("Entrez votre choix");
 		Integer i = sc.nextInt();
 		afficheMenuGeneralChoix(i);
 	}
@@ -32,11 +35,11 @@ public class UI {
 	public static void afficheMenuVol() throws ParseException {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
-		System.out.println("----------  GESTION DES VOLS  ----------");
-		System.out.println("1 : Creation d'un vol");
-		System.out.println("2 : Afficher la liste des vols");
-		System.out.println("3 : Quitter" + "\n");
-		System.out.println("Entrez votre choix");
+		Logger.info("----------  GESTION DES VOLS  ----------");
+		Logger.info("1 : Creation d'un vol");
+		Logger.info("2 : Afficher la liste des vols");
+		Logger.info("3 : Quitter" + "\n");
+		Logger.info("Entrez votre choix");
 		Integer i = sc.nextInt();
 		afficheMenuVolChoix(i);
 	}
@@ -44,10 +47,10 @@ public class UI {
 	public static void afficheMenuReservation() throws ParseException {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
-		System.out.println("----------  GESTION DES RESERVATIONS  ----------");
-		System.out.println("1 : Creation une réservation");
-		System.out.println("2 : Voir les réservations d'un vol");
-		System.out.println("3 : Retour");
+		Logger.info("----------  GESTION DES RESERVATIONS  ----------");
+		Logger.info("1 : Creation une réservation");
+		Logger.info("2 : Voir les réservations d'un vol");
+		Logger.info("3 : Retour");
 		Integer i = sc.nextInt();
 		afficheMenuReservationChoix(i);
 	}
@@ -64,7 +67,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			System.out.println(retourMenu);
+			Logger.info(RetourMenu);
 			afficheMenuGeneral();
 
 		}
@@ -83,7 +86,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			System.out.println(retourMenu);
+			Logger.info(RetourMenu);
 			afficheMenuVolChoix(i);
 		}
 	}
@@ -100,27 +103,28 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			System.out.println(retourMenu);
+			Logger.info(RetourMenu);
 			afficheMenuReservationChoix(i);
 		}
 	}
 
-	@SuppressWarnings("resource")
+	
 	public static void afficheCreationVol() throws ParseException {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat dt = new SimpleDateFormat("dd/mm/yyyy");
 
-		System.out.println("N° de vol :");
+		Logger.info("N° de vol :");
 		Long nVol = Long.parseLong(sc.nextLine());
-		System.out.println("Type d'avion recherché : ");
+		Logger.info("Type d'avion recherché : ");
 		String typeavion = sc.nextLine();
-		System.out.println("Ville de départ : ");
+		Logger.info("Ville de départ : ");
 		String villeDepart = sc.nextLine();
-		System.out.println("Ville d'arrivée : ");
+		Logger.info("Ville d'arrivée : ");
 		String villeArrivee = sc.nextLine();
-		System.out.println("Nombre de place : ");
+		Logger.info("Nombre de place : ");
 		Integer nbPlace = Integer.parseInt(sc.nextLine());
-		System.out.println("Date de départ : ");
+		Logger.info("Date de départ : ");
 		Date dateDepart = dt.parse(sc.nextLine());
 		VolDAO.createVol(new Vol(nVol, typeavion, villeDepart, villeArrivee, nbPlace, dateDepart));
 		
@@ -130,35 +134,38 @@ public class UI {
 	}
 	
 	
-	@SuppressWarnings("resource")
+	
 	public static void afficheCreationReservation() throws ParseException {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("N° de réservation :");
+		Logger.info("N° de réservation :");
 		Long nResa = Long.parseLong(sc.nextLine());
-		System.out.println("Nom : ");
+		Logger.info("Nom : ");
 		String nom = sc.nextLine();
-		System.out.println("Prénom : ");
+		Logger.info("Prénom : ");
 		String prenom = sc.nextLine();
-		System.out.println("Age : ");
+		Logger.info("Age : ");
 		Integer age = Integer.parseInt(sc.nextLine());
 		ReservationDAO.createReservation(new Reservation(nResa, nom, prenom, age));
 		
 		afficheMenuGeneral();
 	}
 	
-	@SuppressWarnings("unused")
+	
 	public static void afficheListeVol(){
+		
 		EntityManager em = DatabaseHelper.createEntityManager();
 		TypedQuery<Vol> query = em.createQuery("from Vol", Vol.class);
-		List<Vol> vols = query.getResultList();
+		query.getResultList();
 
 	}
-	@SuppressWarnings("unused")
+	
 	public static void afficheListeReservation(){
+		
 		EntityManager em = DatabaseHelper.createEntityManager();
 		TypedQuery<Reservation> query = em.createQuery("from Reservation", Reservation.class);
-		List<Reservation> reservations = query.getResultList();
+		query.getResultList();
 
 	}
 

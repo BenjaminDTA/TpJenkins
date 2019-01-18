@@ -5,7 +5,7 @@ import javax.persistence.EntityManager;
 import Modele.Vol;
 
 public class VolDAO {
-		public VolDAO() {
+		private VolDAO() {
 		super();
 	}
 		
