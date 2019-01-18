@@ -4,32 +4,38 @@ import javax.persistence.EntityManager;
 
 import modele.Vol;
 
-
 public class VolDAO {
-		private VolDAO() {
-		super();
+	private VolDAO() {
 	}
-		
-	public static void createVol(Vol vol) {
+
+	private static VolDAO INSTANCE;
+
+	public static VolDAO getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new VolDAO();
+		}
+		return INSTANCE;
+	}
+
+	public void createVol(Vol vol) {
 		EntityManager em = DatabaseHelper.createEntityManager();
 		DatabaseHelper.beginTx(em);
 		em.persist(vol);
 		DatabaseHelper.commitTxAndClose(em);
 	}
 
-	public static void updateVol (Vol vol) {
+	public void updateVol(Vol vol) {
 		EntityManager em = DatabaseHelper.createEntityManager();
 		DatabaseHelper.beginTx(em);
 		em.merge(vol);
 		DatabaseHelper.commitTxAndClose(em);
 	}
 
-	public static void deleteVol(Vol vol) {
+	public void deleteVol(Vol vol) {
 		EntityManager em = DatabaseHelper.createEntityManager();
 		DatabaseHelper.beginTx(em);
 		em.remove(vol);
 		DatabaseHelper.commitTxAndClose(em);
 	}
-
 
 }

@@ -16,8 +16,11 @@ import dao.ReservationDAO;
 import dao.VolDAO;
 
 public class UI {
+	private UI() {
+		
+	}
 
-	private static final String retourMenu = "RetourMenu au menu principal";
+	private static final String Retourmenu = "RetourMenu au menu principal";
 	private static final Logger Logger = LoggerFactory.getLogger(UI.class);
 
 	public static void afficheMenuGeneral() throws ParseException {
@@ -67,7 +70,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			Logger.info(retourMenu);
+			Logger.info(Retourmenu);
 			afficheMenuGeneral();
 
 		}
@@ -86,7 +89,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			Logger.info(retourMenu);
+			Logger.info(Retourmenu);
 			afficheMenuVolChoix(i);
 		}
 	}
@@ -103,7 +106,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			Logger.info(retourMenu);
+			Logger.info(Retourmenu);
 			afficheMenuReservationChoix(i);
 		}
 	}
@@ -125,7 +128,7 @@ public class UI {
 		Integer nbPlace = Integer.parseInt(sc.nextLine());
 		Logger.info("Date de départ : ");
 		Date dateDepart = dt.parse(sc.nextLine());
-		VolDAO.createVol(new Vol(nVol, typeavion, villeDepart, villeArrivee, nbPlace, dateDepart));
+		VolDAO.getInstance().createVol(new Vol(nVol, typeavion, villeDepart, villeArrivee, nbPlace, dateDepart));
 
 		afficheMenuGeneral();
 
@@ -143,7 +146,7 @@ public class UI {
 		String prenom = sc.nextLine();
 		Logger.info("Age : ");
 		Integer age = Integer.parseInt(sc.nextLine());
-		ReservationDAO.createReservation(new Reservation(nResa, nom, prenom, age));
+		ReservationDAO.getInstance().createReservation(new Reservation(nResa, nom, prenom, age));
 
 		afficheMenuGeneral();
 	}
