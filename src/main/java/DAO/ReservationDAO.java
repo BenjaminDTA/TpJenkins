@@ -9,10 +9,10 @@ public class ReservationDAO {
 	private ReservationDAO() {
 	}
 
-	private static ReservationDAO INSTANCE = new ReservationDAO();
+	private static ReservationDAO deuxStance = new ReservationDAO();
 
 	public static ReservationDAO getInstance() {
-		return INSTANCE;
+		return deuxStance;
 	}
 
 	public void createReservation(Reservation resa) {

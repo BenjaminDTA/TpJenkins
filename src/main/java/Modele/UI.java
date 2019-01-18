@@ -20,7 +20,7 @@ public class UI {
 		
 	}
 
-	private static final String Retourmenu = "RetourMenu au menu principal";
+	private static final String RETOURMENU = "RetourMenu au menu principal";
 	private static final Logger Logger = LoggerFactory.getLogger(UI.class);
 
 	public static void afficheMenuGeneral() throws ParseException {
@@ -70,7 +70,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			Logger.info(Retourmenu);
+			Logger.info(RETOURMENU);
 			afficheMenuGeneral();
 
 		}
@@ -89,7 +89,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			Logger.info(Retourmenu);
+			Logger.info(RETOURMENU);
 			afficheMenuVolChoix(i);
 		}
 	}
@@ -106,7 +106,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			Logger.info(Retourmenu);
+			Logger.info(RETOURMENU);
 			afficheMenuReservationChoix(i);
 		}
 	}

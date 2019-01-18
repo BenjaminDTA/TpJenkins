@@ -8,13 +8,13 @@ public class VolDAO {
 	private VolDAO() {
 	}
 
-	private static VolDAO INSTANCE;
+	private static VolDAO deuxStance;
 
 	public static VolDAO getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new VolDAO();
+		if (deuxStance == null) {
+			deuxStance = new VolDAO();
 		}
-		return INSTANCE;
+		return deuxStance;
 	}
 
 	public void createVol(Vol vol) {
