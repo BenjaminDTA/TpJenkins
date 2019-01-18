@@ -1,4 +1,4 @@
-package Modele;
+package modele;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,15 +11,15 @@ import javax.persistence.TypedQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import DAO.DatabaseHelper;
-import DAO.ReservationDAO;
-import DAO.VolDAO;
+import dao.DatabaseHelper;
+import dao.ReservationDAO;
+import dao.VolDAO;
 
 public class UI {
 
-	private final static String RetourMenu ="RetourMenu au menu principal";
-	private final static Logger Logger = LoggerFactory.getLogger(UI.class);
-	
+	private static final String retourMenu = "RetourMenu au menu principal";
+	private static final Logger Logger = LoggerFactory.getLogger(UI.class);
+
 	public static void afficheMenuGeneral() throws ParseException {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
@@ -67,7 +67,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			Logger.info(RetourMenu);
+			Logger.info(retourMenu);
 			afficheMenuGeneral();
 
 		}
@@ -86,7 +86,7 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			Logger.info(RetourMenu);
+			Logger.info(retourMenu);
 			afficheMenuVolChoix(i);
 		}
 	}
@@ -103,12 +103,11 @@ public class UI {
 			afficheMenuGeneral();
 			break;
 		default:
-			Logger.info(RetourMenu);
+			Logger.info(retourMenu);
 			afficheMenuReservationChoix(i);
 		}
 	}
 
-	
 	public static void afficheCreationVol() throws ParseException {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
@@ -127,14 +126,11 @@ public class UI {
 		Logger.info("Date de départ : ");
 		Date dateDepart = dt.parse(sc.nextLine());
 		VolDAO.createVol(new Vol(nVol, typeavion, villeDepart, villeArrivee, nbPlace, dateDepart));
-		
+
 		afficheMenuGeneral();
-	
 
 	}
-	
-	
-	
+
 	public static void afficheCreationReservation() throws ParseException {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
@@ -148,21 +144,20 @@ public class UI {
 		Logger.info("Age : ");
 		Integer age = Integer.parseInt(sc.nextLine());
 		ReservationDAO.createReservation(new Reservation(nResa, nom, prenom, age));
-		
+
 		afficheMenuGeneral();
 	}
-	
-	
-	public static void afficheListeVol(){
-		
+
+	public static void afficheListeVol() {
+
 		EntityManager em = DatabaseHelper.createEntityManager();
 		TypedQuery<Vol> query = em.createQuery("from Vol", Vol.class);
 		query.getResultList();
 
 	}
-	
-	public static void afficheListeReservation(){
-		
+
+	public static void afficheListeReservation() {
+
 		EntityManager em = DatabaseHelper.createEntityManager();
 		TypedQuery<Reservation> query = em.createQuery("from Reservation", Reservation.class);
 		query.getResultList();

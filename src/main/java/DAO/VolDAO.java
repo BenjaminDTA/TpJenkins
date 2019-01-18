@@ -1,8 +1,9 @@
-package DAO;
+package dao;
 
 import javax.persistence.EntityManager;
 
-import Modele.Vol;
+import modele.Vol;
+
 
 public class VolDAO {
 		private VolDAO() {
